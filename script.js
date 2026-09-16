@@ -63,59 +63,55 @@ const produto6 = {
 console.log("Produto cadastrado:", produto.nome);
 
 // ===================================================
-// Função que transforma UM objeto de produto em HTML
+// 🛠️ SUA VEZ: função que transforma UM objeto de produto em HTML
 // ===================================================
-// Ela recebe um objeto de produto e devolve o HTML do card pronto.
-// Como a função não depende de qual produto é, podemos chamá-la
-// quantas vezes quisermos, passando um objeto diferente cada vez.
+// Essa função deve receber um objeto de produto (como os de cima)
+// e devolver uma STRING de HTML representando o card desse produto.
+//
+// Dica: use template literals (aquelas crases ``) com interpolação
+// (${"${produto.nome}"}) pra montar o HTML usando as propriedades
+// do objeto: produto.nome, produto.preco, produto.categoria,
+// produto.descricao, produto.imagem.
+//
+// O HTML final deve seguir essa estrutura (as classes já existem
+// no style.css, então usando elas certinho o visual já vem pronto):
+//
+//   <article class="produto-card">
+//     <img src="..." alt="..." />
+//     <div class="produto-card__conteudo">
+//       <span class="produto-card__categoria">...</span>
+//       <h2 class="produto-card__nome">...</h2>
+//       <p class="produto-card__preco">...</p>
+//       <p class="produto-card__descricao">...</p>
+//       <div class="produto-card__acoes">
+//         <button class="btn btn-editar">Editar</button>
+//         <button class="btn btn-excluir">Excluir</button>
+//       </div>
+//     </div>
+//   </article>
+//
+// Dica bônus: dá pra formatar o preço em Real assim:
+// produto.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
 
 function criarCardProduto(produto) {
-  // Formata o preço no padrão brasileiro (R$ 259,90)
-  const precoFormatado = produto.preco.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  });
-
-  return `
-    <article class="produto-card">
-      <img src="${produto.imagem}" alt="${produto.nome}" />
-      <div class="produto-card__conteudo">
-        <span class="produto-card__categoria">${produto.categoria}</span>
-        <h2 class="produto-card__nome">${produto.nome}</h2>
-        <p class="produto-card__preco">${precoFormatado}</p>
-        <p class="produto-card__descricao">${produto.descricao}</p>
-        <div class="produto-card__acoes">
-          <button class="btn btn-editar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7 21l-4 1 1-4Z"/></svg>
-            Editar
-          </button>
-          <button class="btn btn-excluir">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-            Excluir
-          </button>
-        </div>
-      </div>
-    </article>
-  `;
+  // TODO: escreva aqui o "return" com o HTML do card (vamos fazer isso juntas!)
 }
 
 // ===================================================
 // Colocando os cards na tela
 // ===================================================
-// Por enquanto, sem array, a gente "monta" o HTML final juntando
-// (concatenando, com o +) o resultado de cada chamada da função.
-// Isso funciona, mas dá pra ver que é repetitivo — é exatamente
-// esse tipo de repetição que arrays + .map() vão resolver depois.
+// Depois que a função criarCardProduto estiver pronta, descomente
+// as linhas abaixo pra ver os 6 produtos aparecerem na página.
 
 const listaProdutos = document.querySelector("#lista-produtos");
 
-listaProdutos.innerHTML =
-  criarCardProduto(produto) +
-  criarCardProduto(produto2) +
-  criarCardProduto(produto3) +
-  criarCardProduto(produto4) +
-  criarCardProduto(produto5) +
-  criarCardProduto(produto6);
+// listaProdutos.innerHTML =
+//   criarCardProduto(produto) +
+//   criarCardProduto(produto2) +
+//   criarCardProduto(produto3) +
+//   criarCardProduto(produto4) +
+//   criarCardProduto(produto5) +
+//   criarCardProduto(produto6);
 
 // ===================================================
 // Botões de Editar e Excluir
@@ -123,11 +119,3 @@ listaProdutos.innerHTML =
 // Por enquanto eles são só visuais (fazem parte do card em HTML/CSS),
 // sem nenhum comportamento em JS ainda — isso vai ser implementado
 // mais pra frente, na Etapa 3 (CRUD).
-
-// ===================================================
-// 🎯 DESAFIO (opcional) pra treinar objetos:
-// ===================================================
-// 1. Crie um sétimo objeto ("produto7") com outro produto seu.
-// 2. Adicione ele na lista lá em cima (junte com um "+ criarCardProduto(produto7)").
-// 3. Tente mudar uma propriedade de algum objeto (ex: o preço)
-//    e veja o card atualizar quando a página recarregar.
