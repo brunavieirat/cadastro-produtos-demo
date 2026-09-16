@@ -1,0 +1,320 @@
+/* ===== Variáveis de cor (fica fácil trocar o tema depois) ===== */
+:root {
+  --cor-primaria: #5b4fd6;
+  --cor-primaria-escura: #4a3fc2;
+  --cor-fundo: #f6f6fb;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1f2027;
+  --cor-texto-claro: #6b6b76;
+  --cor-borda: #e6e5f0;
+  --cor-perigo: #d9483b;
+  --sombra: 0 1px 3px rgba(20, 20, 43, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+.icone,
+svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== Cabeçalho ===== */
+.app-header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 20px 16px;
+}
+
+.app-header__marca {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header__marca svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+main {
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+/* ===== Formulário de cadastro ===== */
+.cadastro-produto {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  box-shadow: var(--sombra);
+}
+
+.cadastro-produto__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cadastro-produto h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cor-texto);
+}
+
+.btn-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-claro);
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-toggle:hover {
+  background-color: var(--cor-borda);
+}
+
+.btn-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.cadastro-produto form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo--largo {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--cor-texto-claro);
+}
+
+.campo input,
+.campo textarea {
+  padding: 9px 11px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--cor-texto);
+  background-color: var(--cor-superficie);
+}
+
+.campo input:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.btn-primario {
+  grid-column: 1 / -1;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 9px 18px;
+}
+
+.btn-primario svg {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-primario:hover {
+  background-color: var(--cor-primaria-escura);
+}
+
+/* ===== Barra de busca ===== */
+.busca {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.busca__icone {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--cor-texto-claro);
+  pointer-events: none;
+}
+
+.busca input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  background-color: var(--cor-superficie);
+}
+
+.busca input:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+/* ===== Lista de produtos ===== */
+.lista-produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ===== Card do produto (menor e mais quadrado) ===== */
+.produto-card {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 190px;
+  box-shadow: var(--sombra);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.produto-card:hover {
+  box-shadow: 0 4px 14px rgba(20, 20, 43, 0.1);
+  transform: translateY(-2px);
+}
+
+.produto-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.produto-card__conteudo {
+  padding: 12px;
+}
+
+.produto-card__categoria {
+  display: inline-block;
+  background-color: var(--cor-fundo);
+  color: var(--cor-primaria);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.produto-card__nome {
+  margin: 0 0 2px 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.produto-card__preco {
+  color: var(--cor-primaria);
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0 0 6px 0;
+}
+
+.produto-card__descricao {
+  color: var(--cor-texto-claro);
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.produto-card__acoes {
+  display: flex;
+  gap: 6px;
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.btn svg {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.btn-editar {
+  background-color: var(--cor-fundo);
+  color: var(--cor-primaria);
+}
+
+.btn-editar:hover {
+  background-color: var(--cor-borda);
+}
+
+.btn-excluir {
+  background-color: #fbebe9;
+  color: var(--cor-perigo);
+}
+
+.btn-excluir:hover {
+  background-color: #f7dbd8;
+}
