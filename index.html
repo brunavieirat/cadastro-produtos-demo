@@ -76,7 +76,29 @@
     </section>
 
     <!-- Aqui dentro o JavaScript coloca os cards de produto -->
-    <div id="lista-produtos" class="lista-produtos"></div>
+    <div id="lista-produtos" class="lista-produtos">
+
+      <article class="produto-card">
+      <img src="" alt="" />
+      <div class="produto-card__conteudo">
+        <span class="produto-card__categoria">Teste</span>
+        <h2 class="produto-card__nome">teeste</h2>
+        <p class="produto-card__preco">teste</p>
+        <p class="produto-card__descricao">teste</p>
+        <div class="produto-card__acoes">
+          <button type="button" class="btn btn-editar" data-chave="${chave}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7 21l-4 1 1-4Z"/></svg>
+            Editar
+          </button>
+          <button type="button" class="btn btn-excluir" data-chave="${chave}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            Excluir
+          </button>
+        </div>
+      </div>
+    </article>
+
+    </div>
 
   </main>
 
