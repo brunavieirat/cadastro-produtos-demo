@@ -1,5 +1,5 @@
-const produtos = {
-  produto1: {
+const produtos = [
+   {
   nome: "Tênis Esportivo",
   preco: 259.9,
   categoria: "Calçados",
@@ -7,36 +7,35 @@ const produtos = {
     "Tênis confortável para o dia a dia, ideal para caminhadas e treinos leves.",
   imagem: "https://picsum.photos/seed/tenis/400/300",
 },
-produto3:{
+{
   nome: "Mochila para Notebook",
   preco: 189.5,
   categoria: "Acessórios",
   descricao: "Compartimento acolchoado, resistente à água, cabe notebook de até 15,6\".",
   imagem: "https://picsum.photos/seed/mochila/400/300",
 },
-produto4: {
+{
   nome: "Fone de Ouvido Bluetooth",
   preco: 149.0,
   categoria: "Eletrônicos",
   descricao: "Cancelamento de ruído, bateria de 20h, conexão bluetooth 5.0.",
   imagem: "https://picsum.photos/seed/fone/400/300",
 },
-produto5: {
+ {
   nome: "Garrafa Térmica",
   preco: 59.9,
   categoria: "Utilidades",
   descricao: "Mantém a temperatura por até 12h, aço inox, 500ml.",
   imagem: "https://picsum.photos/seed/garrafa/400/300",
 },
- produto6: {
+  {
   nome: "Relógio Digital",
   preco: 219.0,
   categoria: "Acessórios",
   descricao: "Resistente à água, cronômetro, luz de fundo, pulseira ajustável.",
   imagem: "https://picsum.photos/seed/relogio/400/300",
 }
-};
-
+];
 
 function criarCardProduto(item) {
   // console.log(item)
@@ -66,20 +65,38 @@ let listaProdutos = document.querySelector("#lista-produtos");
 
 function renderizarProdutos() {
 let html = "";
-for (let prop in produtos) {
-  console.log("prop ", prop);
-  console.log("produtos[prop] ", produtos[prop]);
-  console.log("produtos[prop].nome ", produtos[prop].nome);
 
-  html += criarCardProduto(produtos[prop]);
-  // criarCardProduto()
-}
 
-console.log("html ", html);
+produtos.map((produto) => {
+  html += criarCardProduto(produto);
+});
+
 listaProdutos.innerHTML = html;
 }
 
-
 renderizarProdutos();
+
+const inputBusca = document.querySelector("#busca-produto");
+console.log("inputBusca ", inputBusca);
+
+
+inputBusca.addEventListener("input", filtrarProdutos);
+
+function filtrarProdutos(event) {
+  let valorInput = event.target.value;
+  const produtosFiltrados = produtos.filter((item) => {
+    return item.nome.toLowerCase().startsWith(valorInput);
+  });
+
+  // faz o mapeamento do novo array já filtrado e remonta o html
+  const cardsFiltrados = produtosFiltrados.map((produto) => {
+    return criarCardProduto(produto);
+  });
+  listaProdutos.innerHTML = cardsFiltrados.join("");
+
+  console.log("produtosFiltrados ", produtosFiltrados);
+}
+
+const botaoExcluir = document.querySelectorAll(".btn-excluir");
 
 
